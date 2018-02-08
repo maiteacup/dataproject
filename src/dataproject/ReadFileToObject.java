@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import java.util.LinkedHashSet;
 
+import java.util.Random;
 import java.util.Set;
 
 /**
@@ -71,6 +72,14 @@ public class ReadFileToObject {
     return colorList;
   }
 
+  public Cat randomCat(){
+    Random r = new Random();
+    int Low = 0;
+    int High = 100;
+    int result = r.nextInt(High-Low) + Low;
+    Cat cat = getCatList().get(result);
+    return cat;
+  }
   public static void main(String[] args) {
     new ReadFileToObject();
   }

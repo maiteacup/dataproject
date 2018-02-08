@@ -122,4 +122,12 @@ public class Controller {
       setColorBackground(color);
     }
   }
+  public void randomCat(){
+    Cat randomCat = readFileToObject.randomCat();
+    catImage.setImage(randomCat.getImage());
+    String color = randomCat.getColor();
+    catNameLabel.setFont(Font.font("Cambria", 25));
+    catNameLabel.setText(randomCat.getName());
+    setColorBackground(color);
+  }
 }

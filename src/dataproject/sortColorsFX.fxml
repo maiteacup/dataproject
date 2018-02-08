@@ -21,7 +21,7 @@
           <RowConstraints maxHeight="291.0" minHeight="10.0" prefHeight="291.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-                <TableView fx:id="catTable" onMouseClicked="#selectingCat" prefHeight="247.0" prefWidth="717.0" GridPane.rowIndex="1">
+                <TableView fx:id="catTable" onKeyPressed="#selectingCat" onMouseClicked="#selectingCat" prefHeight="247.0" prefWidth="717.0" GridPane.rowIndex="1">
                     <columns>
                         <TableColumn fx:id="catDate" prefWidth="115.0" text="Date" />
                         <TableColumn fx:id="catName" minWidth="0.0" prefWidth="108.0" text="Name" />
@@ -63,6 +63,9 @@
                <center>
                   <ImageView fx:id="catImage" fitHeight="200.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
                </center>
+               <bottom>
+                  <Button fx:id="randomButton" mnemonicParsing="false" onAction="#randomCat" text="Random Cat" BorderPane.alignment="CENTER" />
+               </bottom>
             </BorderPane>
          </children>
       </GridPane>
