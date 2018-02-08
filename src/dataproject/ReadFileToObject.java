@@ -1,6 +1,7 @@
 package dataproject;
 
 
+import com.sun.xml.internal.ws.util.StringUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
@@ -33,10 +34,14 @@ public class ReadFileToObject {
       while ((line = br.readLine()) != null) {
         if (line.contains("Date:")) {
 
-          String date = line;
-          String name = br.readLine();
-          String company = br.readLine();
-          String color = br.readLine();
+          String date = line.split(":")[1];
+          String name = br.readLine().split(":")[1];
+          String company = br.readLine().split(":")[1];
+          String color = br.readLine().split(":")[1];
+          date = StringUtils.capitalize(date);
+          name = StringUtils.capitalize(name);
+          company = StringUtils.capitalize(company);
+          color = StringUtils.capitalize(color);
           Image image = readCatPics.getImageCollection().get(count);
           count++;
           catsList.add(new Cat(date, name, company, color, image));
