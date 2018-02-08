@@ -37,9 +37,6 @@ public class ReadFileToObject {
           String name = br.readLine();
           String company = br.readLine();
           String color = br.readLine();
-          System.out.println("size=" + readCatPics.getImageCollection().size());
-          System.out.println("count=" + count);
-          System.out.println("*************************");
           Image image = readCatPics.getImageCollection().get(count);
           count++;
           catsList.add(new Cat(date, name, company, color, image));

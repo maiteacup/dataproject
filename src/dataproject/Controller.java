@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +64,6 @@ public class Controller {
     colorComboBox.getSelectionModel().selectFirst();
     catTable.setItems(cats);
     catTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-    //setCatPic();
   }
 
   public void sortCatList() {

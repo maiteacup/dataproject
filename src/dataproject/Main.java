@@ -19,7 +19,7 @@ public class Main extends Application{
   public void start(Stage primaryStage) throws Exception{
     Parent root = FXMLLoader.load(getClass().getResource("sortColorsFX.fxml"));
     primaryStage.setTitle("Color Data");
-    primaryStage.setScene(new Scene(root, 700, 375));
+    primaryStage.setScene(new Scene(root, 800, 375));
     primaryStage.setResizable(false);
     primaryStage.show();
   }
