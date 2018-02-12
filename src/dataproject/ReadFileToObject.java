@@ -5,9 +5,11 @@ import com.sun.xml.internal.ws.util.StringUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -16,6 +18,8 @@ import java.util.LinkedHashSet;
 
 import java.util.Random;
 import java.util.Set;
+
+import javax.imageio.ImageIO;
 
 /**
  * Created by mait on 1/18/18.
@@ -75,13 +79,36 @@ public class ReadFileToObject {
   public Cat randomCat(){
     Random r = new Random();
     int Low = 0;
-    int High = 100;
+    int High = readCatPics.getImageCollection().size();
     int result = r.nextInt(High-Low) + Low;
     Cat cat = getCatList().get(result);
     return cat;
   }
   public static void main(String[] args) {
     new ReadFileToObject();
+  }
+
+  public Image catAPI() {
+    Image image = null;
+    try {
+      URL url = new URL("http://thecatapi.com/api/images/get");
+      image = new Image(url.toString());
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return image;
+  }
+  public Image catGIFAPI() {
+    Image image = null;
+    try {
+      URL url = new URL("http://thecatapi.com/api/images/get?format=src&type=gif");
+      image = new Image(url.toString());
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return image;
   }
 }
 

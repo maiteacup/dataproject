@@ -44,8 +44,6 @@ public class Controller {
   @FXML
   private Label catNameLabel;
   @FXML
-  private Button sortButton;
-  @FXML
   private ImageView catImage;
   @FXML
   private Label colorLabel;
@@ -123,11 +121,25 @@ public class Controller {
     }
   }
   public void randomCat(){
+    // This returns a random cat object
     Cat randomCat = readFileToObject.randomCat();
     catImage.setImage(randomCat.getImage());
     String color = randomCat.getColor();
     catNameLabel.setFont(Font.font("Cambria", 25));
     catNameLabel.setText(randomCat.getName());
     setColorBackground(color);
+
+
+  }
+  public void randomCatPic(){
+    catImage.setImage(readFileToObject.catAPI());
+    catNameLabel.setText("");
+    parentPane.setStyle("-fx-background-color: #FFFFFF;");
+  }
+
+  public void randomCatGIF(){
+    catImage.setImage(readFileToObject.catGIFAPI());
+    catNameLabel.setText("");
+    parentPane.setStyle("-fx-background-color: #FFFFFF;");
   }
 }
