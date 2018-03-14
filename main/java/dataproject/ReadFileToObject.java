@@ -1,4 +1,4 @@
-package main.java.dataproject;
+
 
 
 import com.sun.xml.internal.ws.util.StringUtils;
@@ -31,7 +31,7 @@ public class ReadFileToObject {
 
   public ReadFileToObject() {
 
-    String file = "/vnx1/home/mait/IdeaProjects/dataproject/src/dataproject/project-data.txt";
+    String file = "/vnx1/home/mait/IdeaProjects/dataproject/main/java/dataproject/project-data.txt";
     try (
         BufferedReader br = Files.newBufferedReader(Paths.get(file))) {
       String line;

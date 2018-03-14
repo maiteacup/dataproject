@@ -1,6 +1,5 @@
-package main.java.dataproject;
 
-import com.sun.xml.internal.ws.util.StringUtils;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.image.Image;
 
@@ -8,8 +7,14 @@ import javafx.scene.image.Image;
  * Created by mait on 1/18/18.
  */
 
+//@Value.Immutable
 public class Cat {
-
+  /*public abstract SimpleStringProperty date();
+  public abstract SimpleStringProperty name();
+  public abstract SimpleStringProperty company();
+  public abstract SimpleStringProperty color();
+  public abstract Image image();
+  */
   private SimpleStringProperty date;
   private SimpleStringProperty name;
   private SimpleStringProperty company;

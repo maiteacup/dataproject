@@ -1,0 +1,5 @@
+<root>
+    <item name='java.nio.file.Files java.io.BufferedReader newBufferedReader(java.nio.file.Path)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>
