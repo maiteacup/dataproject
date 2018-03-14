@@ -1,4 +1,4 @@
-package dataproject;
+package main.java.dataproject;
 
 import com.sun.xml.internal.ws.util.StringUtils;
 import javafx.beans.property.SimpleStringProperty;
@@ -32,13 +32,18 @@ public class Cat {
     return date;
   }
 
+  public void setDate(String date){
+    this.date.set(date);
+  }
 
   public String getName() {
     String name = this.name.get();
 
     return name;
   }
-
+  public void setName(String name){
+    this.name.set(name);
+  }
 
   public String getCompany() {
     String company = this.company.get();
@@ -46,17 +51,24 @@ public class Cat {
     return company;
   }
 
-
+  public void setCompany(String company){
+    this.company.set(company);
+  }
   public String getColor() {
     String color = this.color.get();
 
     return color;
   }
-
+  public void setColor(String color){
+    this.color.set(color);
+  }
   public Image getImage() {
     return this.image;
   }
 
+  public void setImage(Image image){
+    this.image = image;
+  }
   public String toString() {
     return ("Meow" + "\n" + this.getDate() + "\n" + this.getName() + "\n" + this.getCompany() + "\n" + this.getColor()
             + "\n");
