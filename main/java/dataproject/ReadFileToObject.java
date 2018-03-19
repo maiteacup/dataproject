@@ -2,11 +2,10 @@
 
 
 import com.sun.xml.internal.ws.util.StringUtils;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.URL;
@@ -16,8 +15,10 @@ import java.util.ArrayList;
 
 import java.util.LinkedHashSet;
 
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.imageio.ImageIO;
 
@@ -39,7 +40,16 @@ public class ReadFileToObject {
       while ((line = br.readLine()) != null) {
         if (line.contains("Date:")) {
 
-          String date = line.split(":")[1];
+      Cat value = ImmutableCat.builder()
+        .date(StringUtils.capitalize(line.split(":")[1]))
+        .name(StringUtils.capitalize(br.readLine().split(":")[1]))
+        .company(StringUtils.capitalize(br.readLine().split(":")[1]))
+          .color(StringUtils.capitalize(br.readLine().split(":")[1]))
+          .image(readCatPics.getImageCollection().get(count))
+      .build();
+          count++;
+          catsList.add(value);
+      /*    String date = line.split(":")[1];
           String name = br.readLine().split(":")[1];
           String company = br.readLine().split(":")[1];
           String color = br.readLine().split(":")[1];
@@ -50,6 +60,7 @@ public class ReadFileToObject {
           Image image = readCatPics.getImageCollection().get(count);
           count++;
           catsList.add(new Cat(date, name, company, color, image));
+          */
         }
 
       }
@@ -70,7 +81,7 @@ public class ReadFileToObject {
     String trimColor = "Color:";
     catsColors.add("All");
     for (int i = 0; i < catsList.size(); i++) {
-      catsColors.add(catsList.get(i).getColor());
+      catsColors.add(catsList.get(i).color());
     }
     Set<String> colorList = new LinkedHashSet<String>(catsColors);
     return colorList;

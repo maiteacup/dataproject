@@ -1,5 +1,6 @@
 
 
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -34,13 +35,13 @@ public class Controller {
   @FXML
   private TableView<Cat> catTable;
   @FXML
-  private TableColumn catDate;
+  private TableColumn<Cat, String> catDate;
   @FXML
-  private TableColumn catName;
+  private TableColumn<Cat, String> catName;
   @FXML
-  private TableColumn catCompany;
+  private TableColumn<Cat, String> catCompany;
   @FXML
-  private TableColumn catColor;
+  private TableColumn<Cat, String> catColor;
   @FXML
   private Label catNameLabel;
   @FXML
@@ -53,13 +54,14 @@ public class Controller {
 
   @FXML
   private void initialize() {
-
+    System.out.print(cats.get(0).date());
     colorComboBox.setItems(FXCollections.observableList(colorList));
-    catDate.setCellValueFactory(new PropertyValueFactory<Cat, String>("date"));
-    catName.setCellValueFactory(new PropertyValueFactory<Cat, String>("name"));
-    catCompany.setCellValueFactory(new PropertyValueFactory<Cat, String>("company"));
-    catColor.setCellValueFactory(new PropertyValueFactory<Cat, String>("color"));
+    catDate.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().date()));
+    catName.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().name()));
+    catCompany.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().company()));
+   catColor.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().color()));
     colorComboBox.getSelectionModel().selectFirst();
+    System.out.println(catDate.getCellData(0));
     catTable.setItems(cats);
     catTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
   }
@@ -71,7 +73,7 @@ public class Controller {
       catTable.setItems(sortedCatList);
     } else {
       List<Cat> sortingCatList = cats.stream()
-          .filter(x -> colorValue.equals(x.getColor()))
+          .filter(x -> colorValue.equals(x.color()))
           .collect(Collectors.toList());
       ObservableList<Cat> sortedCatList = FXCollections.observableList(sortingCatList);
       catTable.setItems(sortedCatList);
@@ -112,21 +114,21 @@ public class Controller {
   public void selectingCat() {
     if (catTable.getSelectionModel().getSelectedItem() != null) {
       Cat cat = catTable.getSelectionModel().getSelectedItem();
-      String catName = cat.getName();
-      String color = cat.getColor();
+      String catName = cat.name();
+      String color = cat.color();
       catNameLabel.setFont(Font.font("Cambria", 25));
       catNameLabel.setText(catName);
-      catImage.setImage(cat.getImage());
+      catImage.setImage(cat.image());
       setColorBackground(color);
     }
   }
   public void randomCat(){
     // This returns a random cat object
     Cat randomCat = readFileToObject.randomCat();
-    catImage.setImage(randomCat.getImage());
-    String color = randomCat.getColor();
+    catImage.setImage(randomCat.image());
+    String color = randomCat.color();
     catNameLabel.setFont(Font.font("Cambria", 25));
-    catNameLabel.setText(randomCat.getName());
+    catNameLabel.setText(randomCat.name().toString());
     setColorBackground(color);
 
 

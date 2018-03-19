@@ -1,20 +1,19 @@
 
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.image.Image;
-
+import org.immutables.value.Value;
 /**
  * Created by mait on 1/18/18.
  */
 
-//@Value.Immutable
-public class Cat {
-  /*public abstract SimpleStringProperty date();
-  public abstract SimpleStringProperty name();
-  public abstract SimpleStringProperty company();
-  public abstract SimpleStringProperty color();
+@Value.Immutable
+public abstract class Cat {
+  public abstract String date();
+  public abstract String name();
+  public abstract String company();
+  public abstract String color();
   public abstract Image image();
-  */
+  /*
   private SimpleStringProperty date;
   private SimpleStringProperty name;
   private SimpleStringProperty company;
@@ -78,5 +77,5 @@ public class Cat {
     return ("Meow" + "\n" + this.getDate() + "\n" + this.getName() + "\n" + this.getCompany() + "\n" + this.getColor()
             + "\n");
   }
-
+*/
 }
