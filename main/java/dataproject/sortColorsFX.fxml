@@ -166,7 +166,7 @@
                   <ImageView fx:id="previewCatImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
                </center>
                <bottom>
-                  <Button fx:id="chooseImageButton" mnemonicParsing="false" text="Choose Image" BorderPane.alignment="CENTER" />
+                  <Button fx:id="chooseImageButton" mnemonicParsing="false" onAction="#selectCatPicture" text="Choose Image" BorderPane.alignment="CENTER" />
                </bottom>
                <top>
                   <Label prefHeight="38.0" prefWidth="76.0" text="Preview" BorderPane.alignment="CENTER">

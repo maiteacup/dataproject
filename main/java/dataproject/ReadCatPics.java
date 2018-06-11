@@ -4,6 +4,8 @@
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 
+import javafx.scene.image.Image;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;

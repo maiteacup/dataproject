@@ -1,9 +1,16 @@
 
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -20,6 +27,10 @@ import javafx.scene.text.TextAlignment;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 
 
 /**
@@ -44,6 +55,8 @@ public class Controller {
   private TableColumn<Cat, String> catColor;
   @FXML
   private Label catNameLabel;
+  @FXML
+  private ImageView previewCatImage;
   @FXML
   private ImageView catImage;
   @FXML
@@ -143,5 +156,18 @@ public class Controller {
     catImage.setImage(readFileToObject.catGIFAPI());
     catNameLabel.setText("");
     parentPane.setStyle("-fx-background-color: #FFFFFF;");
+  }
+
+  public void selectCatPicture(){
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Open Image");
+    fileChooser.getExtensionFilters().add(new ExtensionFilter("Image files", "*.png", "*.jpg", "*.gif"));
+    File file = fileChooser.showOpenDialog(new Stage());
+    try{
+      Image image = SwingFXUtils.toFXImage(ImageIO.read(file), null);
+      previewCatImage.setImage(image);
+    }catch(IOException e){
+
+    }
   }
 }
